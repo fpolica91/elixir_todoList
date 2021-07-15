@@ -13,6 +13,14 @@ defmodule LiveViewTodosWeb.TodoLive do
     {:noreply, fetch(socket)}
   end
 
+  def handle_event("edit_todo", %{"id" => id, "title" => title}, socket) do
+    title
+    |> IO.inspect(label: "TODO")
+
+    # Todos.create_todo(todo)
+    {:noreply, fetch(socket)}
+  end
+
   def handle_event("delete_todo", %{"id" => id}, socket) do
     todo = Todos.get_todo!(id)
     Todos.delete_todo(todo)
